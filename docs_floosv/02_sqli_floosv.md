@@ -37,4 +37,40 @@ La consulta resultante podria transformarse en algo equivalente a:
     WHERE user_id = '' OR '1'='1';
 Donde la condición '1'='1' siempre es verdadera, por lo que la cláusula **WHERE** deja de filtrar correctamente y la consulta puede devolver los registros disponibles.
 
-## Seguir completandoaa
+## Causa raiz
+La causa principal de la vulnerabilidad es:
+
+- Uso inseguro de funciones del sistema.
+- Falta de validación estricta de la entrada.
+- Dependencia de la shell para ejecutar operaciones que deberían resolverse por medios más seguros.
+- Ausencia de listas blancas o controles de restricción.
+
+## Impacto para Terranova
+
+Si el portal de Terranova presentara una vulnerabilidad de **command injection**, el riesgo sería crítico, ya que ya no se trataría solo de un problema de datos visibles al usuario, sino de un posible compromiso del servidor que soporta la operación del portal.
+
+#### Un atacante podría llegar a:
+
+- Leer archivos internos del sistema.
+- Buscar credenciales, claves o configuraciones inseguras.
+- Alterar archivos o procesos si la cuenta del servicio tiene privilegios excesivos.
+- Interrumpir el funcionamiento del portal.
+utilizar el servidor comprometido como punto de apoyo para acceder a otros activos internos.
+
+#### Activos que podrían verse afectados
+- Servidor del portal de clientes.
+- Base de datos o archivos de configuración con credenciales.
+- Repositorio de contratos o documentos adjuntos.
+- Datos financieros y personales de clientes.
+- Disponibilidad general del servicio.
+
+#### Consecuencias de negocio
+
+Una vulnerabilidad de este tipo podría significar:
+
+- Indisponibilidad del portal.
+- Exposición de información sensible.
+- Daño reputacional severo.
+- Interrupción de procesos comerciales.
+- Costos de contención, recuperación y revisión de seguridad.
+- Pérdida de confianza de clientes y socios.
