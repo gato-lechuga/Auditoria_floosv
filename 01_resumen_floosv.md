@@ -29,3 +29,38 @@ De forma específica, esta auditoría busca:
 - Traducir los hallazgos técnicos a riesgos de negocio para Terranova.
 - Identificar los activos de información críticos del portal inmobiliario.
 - Proponer políticas de prevención, controles de mitigación y un plan de recuperación ante incidentes.
+
+## 3. Contexto de negocio: Terranova
+
+Terranova opera como una inmobiliaria que administra procesos vinculados con la publicación de propiedades, la relación con clientes, la formalización de contratos y la administración de antecedentes económicos asociados a arrendamientos, compraventas y otros servicios del rubro.
+
+Su portal de clientes representa un activo central del negocio, ya que a través de él se puede acceder a información como:
+
+- Datos personales de clientes.
+- Contratos inmobiliarios digitalizados.
+- Historial de pagos y antecedentes financieros.
+- Información de propiedades asociadas a clientes y operaciones.
+- Estados de solicitudes y trámites comerciales.
+
+Debido a la naturaleza de esta información, Terranova requiere garantizar los principios de **confidencialidad, integridad y disponibilidad**. Una vulnerabilidad explotada en este portal podría provocar fuga de datos sensibles, alteración de contratos, suplantación de identidad de clientes, daño reputacional e interrupción operativa.
+
+## 4. Hallazgos principales
+
+### 1 Inyección SQL
+La vulnerabilidad de **SQL Injection** permitió manipular una consulta a la base de datos mediante el payload `' OR '1'='1`, obteniendo como resultado el acceso a múltiples registros. En un escenario equivalente dentro del portal de Terranova, esta vulnerabilidad podría permitir la **exposición de contratos, datos financieros y datos personales** de clientes.
+
+### 2 XSS Reflected
+La vulnerabilidad de **Cross-Site Scripting Reflejado** permitió ejecutar código JavaScript en el navegador de la víctima mediante el payload `<script>alert('XSS')</script>`. En el contexto de Terranova, una falla de este tipo podría facilitar el **robo de sesión**, la **suplantación de clientes** o la **captura de información sensible** introducida en formularios del portal.
+
+### 3 Inyección de comandos
+La vulnerabilidad de **Command Injection** permitió ejecutar comandos del sistema operativo utilizando el payload `127.0.0.1; cat /etc/passwd`. En un escenario real, una vulnerabilidad de esta naturaleza podría comprometer el **servidor del portal**, exponer archivos internos, facilitar movimientos laterales y poner en riesgo la disponibilidad del servicio y la seguridad de la información almacenada.
+
+## 5. Conclusión general
+
+Los resultados obtenidos demuestran que vulnerabilidades aparentemente “técnicas” pueden transformarse en **riesgos críticos de negocio** cuando afectan un portal que custodia información contractual y financiera, como ocurre en Terranova. La explotación de SQL Injection, XSS y Command Injection evidencia debilidades en validación de entradas, tratamiento seguro de datos, separación de privilegios y protección del entorno de ejecución.
+
+A partir de los hallazgos, se concluye que Terranova debe fortalecer de forma prioritaria sus prácticas de **desarrollo seguro**, **protección de la base de datos**, **sanitización de entradas**, **seguridad de sesiones**, **segmentación de privilegios** y **respuesta ante incidentes**. Asimismo, es necesario implementar una **matriz de riesgo** que permita priorizar las medidas de seguridad según el impacto real sobre los activos del negocio.
+
+## 6. Alcance y consideraciones éticas
+
+Esta auditoría fue realizada exclusivamente en un ambiente controlado y autorizado, utilizando DVWA como laboratorio de práctica. Las técnicas descritas en este informe tienen fines **formativos y defensivos**, y no deben aplicarse sobre sistemas reales sin autorización expresa. 
