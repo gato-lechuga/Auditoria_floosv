@@ -37,4 +37,4 @@ La consulta resultante podria transformarse en algo equivalente a:
     WHERE user_id = '' OR '1'='1';
 Donde la condición '1'='1' siempre es verdadera, por lo que la cláusula **WHERE** deja de filtrar correctamente y la consulta puede devolver los registros disponibles.
 
-## Seguir completando
+## Seguir completandoaa
