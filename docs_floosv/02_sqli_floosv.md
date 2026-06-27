@@ -74,3 +74,76 @@ Una vulnerabilidad de este tipo podría significar:
 - Interrupción de procesos comerciales.
 - Costos de contención, recuperación y revisión de seguridad.
 - Pérdida de confianza de clientes y socios.
+
+#### Evaluación CVSS v3.1
+
+Para evaluar la gravedad del hallazgo se utilizó la calculadora CVSS v3.1. La inyección SQL es una vulnerabilidad de alta criticidad porque permite comprometer la **confidencialidad** y, dependiendo del caso, también la **integridad** y la **disponibilidad**.
+
+Dando un **puntaje estimado de 9.1** y una **Severidad: Crítica** ???????
+
+
+## Política de prevención
+
+La prevención busca evitar que la vulnerabilidad exista en la aplicación desde su diseño y desarrollo. Para Terranova, las políticas preventivas recomendadas son:
+
+### Política de desarrollo seguro
+
+Todo desarrollo del portal de clientes debe incorporar prácticas de seguridad desde la fase de diseño, especialmente en módulos que consultan bases de datos con información contractual y financiera.
+
+### Uso obligatorio de consultas parametrizadas
+
+Las consultas SQL deben implementarse utilizando prepared statements o mecanismos equivalentes, evitando la concatenación directa de entradas del usuario.
+
+### Validación de entradas
+
+Los parámetros recibidos por formularios, URL o APIs deben validarse según:
+
+- Tipo esperado.
+- Longitud.
+- Formato.
+- Rango permitido.
+
+### Principio de mínimo privilegio
+
+La cuenta de base de datos utilizada por la aplicación debe contar únicamente con los permisos necesarios para operar, evitando privilegios excesivos.
+
+### Revisión de código y pruebas de seguridad
+
+Todo cambio en módulos críticos debe someterse a:
+
+- Revisión de código.
+- Pruebas funcionales.
+- Pruebas de seguridad orientadas a inyecciones.
+
+### Controles de mitigación
+
+Los controles de mitigación buscan reducir el impacto si una vulnerabilidad existe o si un intento de explotación ocurre.
+
+### Prepared statements / consultas parametrizadas
+
+Constituyen el control técnico principal para separar datos de instrucciones SQL.
+
+### WAF (Web Application Firewall)
+
+Puede ayudar a detectar o bloquear patrones de inyección conocidos antes de que lleguen a la aplicación.
+
+### Monitoreo y alertas
+
+Se recomienda registrar y monitorear:
+
+- Errores de base de datos.
+- Consultas anómalas.
+- Patrones repetitivos de payloads maliciosos.
+- Intentos de enumeración.
+ 
+### Segmentación de acceso a la información
+
+La exposición de datos debe limitarse por perfil, función y necesidad operativa, reduciendo el impacto de una explotación.
+
+### Auditoría y trazabilidad
+
+Las acciones realizadas sobre información contractual y financiera deben quedar registradas para facilitar detección temprana e investigación posterior.
+
+## Conclusiones
+
+La inyección SQL representa uno de los riesgos más graves para el portal de Terranova, debido a que ataca directamente la capa donde se almacenan **contratos** y **datos financieros de clientes**. La vulnerabilidad no solo compromete la confidencialidad, sino que puede convertirse en la puerta de entrada para ataques más profundos. Por ello, su tratamiento debe considerarse **prioridad alta o crítica** dentro del programa de seguridad de la empresa.
