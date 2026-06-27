@@ -77,9 +77,18 @@ Una vulnerabilidad de este tipo podría significar:
 
 #### Evaluación CVSS v3.1
 
-Para evaluar la gravedad del hallazgo se utilizó la calculadora CVSS v3.1. La inyección SQL es una vulnerabilidad de alta criticidad porque permite comprometer la **confidencialidad** y, dependiendo del caso, también la **integridad** y la **disponibilidad**.
-
-Dando un **puntaje estimado de 9.1** y una **Severidad: Crítica** ???????
+Vector  CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:L
+| Métrica | Valor | Justificación |
+|---------|-------|---------------|
+| **Attack Vector (AV)** | **Network (N)** | La vulnerabilidad puede explotarse a través de la red o Internet. |
+| **Attack Complexity (AC)** | **Low (L)** | La explotación no requiere condiciones especiales ni complejidad adicional. |
+| **Privileges Required (PR)** | **None (N)** | El atacante no necesita autenticarse para explotar la vulnerabilidad. |
+| **User Interaction (UI)** | **None (N)** | No requiere que un usuario realice ninguna acción. |
+| **Scope (S)** | **Changed (C)** | La explotación puede afectar recursos fuera del componente vulnerable, como la base de datos. |
+| **Confidentiality (C)** | **High (H)** | Permite acceder a información sensible almacenada en la base de datos. |
+| **Integrity (I)** | **High (H)** | Puede permitir modificar o eliminar información de la base de datos. |
+| **Availability (A)** | **Low (L)** | Puede afectar parcialmente la disponibilidad del servicio o de los datos. |
+| **Puntaje CVSS v3.1** | **9.1 (Crítica)** | Resultado obtenido al evaluar el vector CVSS correspondiente. |
 
 
 ## Política de prevención
