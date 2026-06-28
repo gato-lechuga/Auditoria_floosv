@@ -3,7 +3,7 @@ import "./App.css";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 
-import Resumen from "./components/Resumen";
+import Resumen from "./components/Resumen.jsx";
 import SQLi from "./components/SQLi";
 import XSS from "./components/XSS";
 import Comandos from "./components/Comandos";
